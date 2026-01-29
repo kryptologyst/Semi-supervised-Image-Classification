@@ -1,0 +1,38 @@
+# @package training
+
+_target_: src.train.trainer.SemiSupervisedTrainer
+
+# Training configuration
+max_epochs: 100
+patience: 20
+min_delta: 0.001
+
+# Optimizer
+optimizer:
+  _target_: torch.optim.SGD
+  lr: 0.01
+  momentum: 0.9
+  weight_decay: 1e-4
+
+# Learning rate scheduler
+scheduler:
+  _target_: torch.optim.lr_scheduler.CosineAnnealingLR
+  T_max: 100
+
+# Loss configuration
+loss:
+  supervised_weight: 1.0
+  unsupervised_weight: 1.0
+  consistency_weight: 1.0
+
+# Semi-supervised specific
+pseudo_labeling:
+  threshold: 0.95
+  warmup_epochs: 10
+  rampup_epochs: 20
+
+# Validation
+val_check_interval: 1.0
+save_top_k: 3
+monitor: "val_acc"
+mode: "max"

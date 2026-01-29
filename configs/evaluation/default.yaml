@@ -1,0 +1,23 @@
+# @package evaluation
+
+_target_: src.eval.evaluator.Evaluator
+
+# Evaluation metrics
+metrics:
+  - "accuracy"
+  - "precision"
+  - "recall"
+  - "f1"
+  - "confusion_matrix"
+
+# Evaluation configuration
+batch_size: 64
+num_workers: 4
+save_predictions: true
+save_attention_maps: false
+
+# Visualization
+visualize:
+  confusion_matrix: true
+  class_activation_maps: true
+  sample_predictions: 20

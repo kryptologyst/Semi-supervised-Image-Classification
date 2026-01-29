@@ -1,0 +1,35 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - model: resnet50
+  - data: cifar10
+  - training: default
+  - evaluation: default
+
+# Experiment configuration
+experiment:
+  name: "semi_supervised_classification"
+  tags: ["semi-supervised", "image-classification", "pseudo-labeling"]
+  seed: 42
+
+# Paths
+paths:
+  data_dir: "./data"
+  output_dir: "./outputs"
+  checkpoint_dir: "./checkpoints"
+  log_dir: "./logs"
+
+# Device configuration
+device: "auto"  # auto, cuda, mps, cpu
+
+# Logging
+logging:
+  level: "INFO"
+  log_every_n_steps: 100
+  save_every_n_epochs: 5
+
+# Mixed precision training
+mixed_precision: true
+gradient_accumulation_steps: 1
+gradient_checkpointing: false

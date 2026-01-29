@@ -1,0 +1,14 @@
+# @package model
+
+_target_: src.models.resnet.ResNet50
+
+# Model configuration
+num_classes: 10
+pretrained: true
+dropout: 0.1
+
+# Semi-supervised learning specific
+use_ema: true
+ema_decay: 0.999
+use_consistency: true
+consistency_weight: 1.0
